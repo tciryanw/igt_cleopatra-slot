@@ -1,0 +1,65 @@
+{
+  "urls": [
+    "audio1.mp3",
+    "audio1.ogg",
+    "audio1.m4a"
+  ],
+  "sprite": {
+    "BaseRollup": [
+      0,
+      1340.3628117913834
+    ],
+    "BaseRollupTerm": [
+      2050,
+      1957.6870748299316
+    ],
+    "BigWin": [
+      4100,
+      6620.680272108844
+    ],
+    "BigWinEnd": [
+      11150,
+      2681.678004535147
+    ],
+    "BonusRollupLevel1": [
+      14200,
+      805.3514739229026
+    ],
+    "BonusRollupLevel2": [
+      15250,
+      1318.7755102040803
+    ],
+    "BonusRollupLevel3": [
+      17299.999999999996,
+      1244.761904761905
+    ],
+    "BonusRollupLevel4": [
+      19349.999999999996,
+      1298.8662131519284
+    ],
+    "BonusRollupLevel5": [
+      21400,
+      1052.94784580499
+    ],
+    "BonusRollupTermLevel1": [
+      23450,
+      1006.7120181405897
+    ],
+    "BonusRollupTermLevel2": [
+      25500,
+      1744.1043083900213
+    ],
+    "BonusRollupTermLevel3": [
+      27549.999999999996,
+      1646.2131519274371
+    ],
+    "BonusRollupTermLevel4": [
+      29599.999999999996,
+      1553.8095238095232
+    ],
+    "BonusRollupTermLevel5": [
+      31650,
+      1466.598639455782
+    ]
+  }
+}

@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var host_name = '<!--#echo encoding="none" var="GAME_HOST"-->';
+        if (host_name.indexOf("echo encoding") >= 0) { //environment variable NOT set up
+            host_name = "";
+        }
+
+        /**
+         * includeScript
+         * This function replaces the <script src> tag for instances where
+         * a GAME_HOST path may be required
+         * @param scriptPath - URL to script
+         */
+        function includeScript(scriptPath) {
+            document.write("<script type='text/javascript' src=" + host_name + scriptPath + "><\/script>");
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script type="text/javascript" src="igtKeepAlive.js"></script>
+</head>
+
+<body>
+    <div id="slider">
+        <div class="layout">
+            <div id="content">
+                <div id="background">
+
+                    <span id="timerSpan" class="leftAligned">
+					<div id="clockDiv">12:34</div>
+					<div id="elapsedDiv">12:34</div>
+				</span>
+
+                    <span id="logoSpan">&nbsp;</span>
+
+                    <span id="totalBalanceSpan" class="leftAligned rpOnly">
+					<label id="totalBalanceText" class="labelField totalBalanceLabel translate">Balance:</label>
+					<input name="balance" class="valueField totalBalanceValue" readonly>
+				</span>
+
+                    <span id="payoutSpan" class="leftAligned rpOnly">
+					<label id="payoutText" class="labelField payoutLabel translate">Payout:</label>
+					<input name="payout" class="valueField payoutValue" readonly>
+				</span>
+
+                    <span id="stakeSpan" class="leftAligned rpOnly">
+					<label id="stakeText" class="labelField stakeLabel translate">Stake:</label>
+					<input name="stake" class="valueField stakeValue" readonly>
+				</span>
+
+                    <span id="pfsBalanceSpan" class="leftAligned fsOnly">
+					<label id="pfsBalanceText" class="labelField pfsBalanceLabel translate">Balance:</label>
+					<input name="pfsBalance" class="valueField pfsBalanceValue" readonly>
+				</span>
+
+                    <span id="pfsWinSpan" class="leftAligned fsOnly">
+					<label id="pfsWinText" class="labelField pfsWinLabel translate">FS Win:</label>
+					<input name="pfsWin" class="valueField pfsWinValue" readonly>
+				</span>
+
+                    <span id="pfsCountSpan" class="leftAligned fsOnly">
+					<label id="pfsCountText" class="labelField pfsCountLabel translate">FS Count:</label>
+					<input name="pfsCount" class="valueField pfsCountValue" readonly>
+				</span>
+
+                    <span id="transactionSpan" class="leftAligned">
+					<label id="transactionText" class="labelField transactionLabel translate">Transaction ID:</label>
+					<input name="transaction" class="valueField transactionValue" readonly>
+				</span>
+
+                    <span id="soundSpan" class="rightAligned">
+					<input type="checkbox" name="sound" class="sound-cb" id="sound" checked>
+					<label class="soundLabel button" for="sound">
+						<div class="soundDiv"></div>
+					</label>
+				</span>
+
+                    <span id="howToPlaySpan" class="rightAligned">
+					<a id="howToPlay" target="_top">
+						<label id="howToPlayText" class="button howToPlayButton translate">Help</label>
+					</a>
+				</span>
+
+                    <span id="paytableSpan" class="rightAligned">
+					<a id="paytable" target="_top">
+						<label id="paytableText" class="button paytableButton translate">Paytable</label>
+					</a>
+				</span>
+
+                    <span id="responsibleSpan" class="rightAligned">
+					<a id="responsibleLink" target="_top" class="getURL">
+						<label id="responsibleText" class="button responsibleButton translate">Responsible Gaming</label>
+					</a>
+				</span>
+
+                    <span id="lobbySpan" class="rightAligned">
+					<a id="lobbyLink" target="_top" class="getURL">
+						<label id="lobbyText" class="button lobbyButton translate">lobby</label>
+					</a>
+				</span>
+
+                    <span id="custom1Span" class="rightAligned">
+					<a id="custom1Link" target="_top" class="getURL">
+						<label id="custom1Text" class="button custom1Button translate">lobby</label>
+					</a>
+				</span>
+
+                    <span id="custom2Span" class="rightAligned">
+					<a id="custom2Link" target="_top" class="getURL">
+						<label id="custom2Text" class="button custom2Button translate">lobby</label>
+					</a>
+				</span>
+
+                    <span id="custom3Span" class="rightAligned">
+					<a id="custom3Link" target="_top" class="getURL">
+						<label id="custom3Text" class="button custom3Button translate">lobby</label>
+					</a>
+				</span>
+
+                </div>
+
+                <fieldset id="cashier">
+                    <legend>Cashier</legend>
+                    <button id="cashier:buyin">Buy In</button>
+                    <button id="cashier:cashout">Cash Out</button>
+                </fieldset>
+
+            </div>
+            <script>
+                var content = document.getElementById('content');
+            </script>
+        </div>
+        <div id="activateContainer"><span id="activate" class="enabled"></span></div>
+    </div>
+
+    <div id="dialogBox">
+        <div id="dialogFrame">
+            <div id="dialogStrong">Strong</div>
+            <div id="dialogNormal">Normal</div>
+            <div id="dialogNav">
+                <a id="dialogButton1" target="_top">
+				<label id="dialogButton1Text" class="button">Button 1</label>
+			</a>
+                <a id="dialogButton2" target="_top">
+				<label id="dialogButton2Text" class="button">Button 2</label>
+			</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="messagePopup" class="popup">
+        <div class="vcentered">
+            <div>Title</div>
+            <button id="messageOne">one</button>
+            <button id="messageTwo">two</button>
+            <button id="messageThree">three</button>
+        </div>
+    </div>
+    <div id="mxfMessagePopup" class="popup"></div>
+
+    <!-- include these with SSI to cut the number of server requests -->
+    <script>
+        includeScript("/IXF/1.4/lib/extern.js");
+        includeScript("/IXF/1.4/lib/events.js");
+        includeScript("/IXF/1.4/lib/sliderdt.js");
+        includeScript("/IXF/1.4/promotionalFreeSpins/consoleUI.js");
+        includeScript("/IXF/1.4/cashier/cashierService.js");
+        includeScript("/IXF/1.4/cashier/cashierBuyInForm.js");
+        includeScript("/IXF/1.4/cashier/cashierCashOutForm.js");
+        includeScript("/IXF/1.4/cashier/consoleUI.js");
+    </script>
+    <script>
+        var skinCode = location.search.match(/skincode=([^&]+)/)[1];
+        var paramList = location.search.substr(location.search.indexOf("?") + 1);
+        var params = paramList.split("&");
+
+        var head = document.getElementsByTagName('head')[0];
+        var link = document.createElement('link');
+        link.title = 'consoleCSS';
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'INT_STD.css';
+        link.media = 'all';
+        head.appendChild(link);
+
+        var firstLaunch = true;
+        var configData = "";
+        var configReq = "";
+        var configRetry = true;
+        getConfig(window.location.protocol + "//" + window.location.host + "/skins/" + skinCode + "/console.json");
+
+        function getConfig(url) {
+            configReq = new XMLHttpRequest();
+            configReq.open("GET", url);
+            configReq.onloadend = function(pe) {
+                if (configReq.status == "404" && configRetry) {
+                    configRetry = false;
+                    getConfig("console.json");
+                } else {
+                    if (configReq.status != "404") {
+                        configData = JSON.parse(configReq.responseText);
+                    } else {
+                        console.log("%cUnable to open console.json.", "background: #ff8");
+                    }
+                }
+            }
+            configReq.send();
+        }
+
+        window.addEventListener('com.igt.events.bridgeReady',
+            function(event) {
+                var enabled = 1;
+                var active = 0;
+                var activating = 0; //set when the consol is in the process of actiavting
+                var deactivating = 0; //set when the console is in the process of deactivating
+                var closeButton = document.getElementById('closeButton');
+                var commands = document.getElementById('commands');
+
+                var cashier = document.getElementById('cashier');
+                var response = document.getElementById('response'); //brownpa - verify this name?
+
+                var content = document.getElementById('content');
+
+                var language = "en";
+                var gameLanguage = "en";
+
+                var messagePopup = document.getElementById('messagePopup');
+                var mxfMessagePopup = document.getElementById('mxfMessagePopup');
+                var messageButtons = [
+                    document.getElementById('messageOne'),
+                    document.getElementById('messageTwo'),
+                    document.getElementById('messageThree')
+                ];
+                var messageQueued = 0;
+                var visiblePopup = 0;
+                var lastOutcomeDetail = {};
+
+                var IGTbridge = event.bridge;
+
+                var regMatch = "";
+                var realityCheckLimit = 0;
+                var realityCheckElapsed = 0;
+                var realityTimer;
+                var sessionStarTime = performance.now();
+                var startTime = performance.now();
+                var realityCheckOpen = false;
+                var wagerComplete = false;
+                var totalPayout = 0;
+                var isFirstTimeLaunch = true;
+
+                try {
+                    var keepAlive = new igt.keepalive.igtKeepAlive();
+                    var keepAliveURL = '';
+                    var keepAliveEventsFlag = false;
+
+                } catch (err) {
+                    console.log("keepAlive can't work  ");
+                }
+
+                try {
+                    regMatch = 'sessionLimit=([^&]+)';
+                    realityCheckLimit = parseInt(location.search.match(regMatch)[1]);
+                    regMatch = 'sessionElapsed=([^&]+)';
+                    realityCheckElapsed = parseInt(location.search.match(regMatch)[1]);
+                } catch (err) {
+                    console.log("%cUnable to parse UK Reality Check values. " + realityCheckLimit + ":" + realityCheckElapsed);
+                }
+                if (realityCheckLimit > 0) {
+                    window.clearTimeout(realityTimer);
+                    realityTimer = window.setTimeout(showRealityCheck, (realityCheckLimit - realityCheckElapsed) * 1000);
+                }
+
+                setTimeout(displayTime, 100);
+
+                function displayTime() {
+                    var currentTime = new Date();
+                    document.getElementById('clockDiv').innerHTML =
+                        currentTime.getHours() + ":" +
+                        ("00" + currentTime.getMinutes()).substr(-2, 2) + ":" +
+                        ("00" + currentTime.getSeconds()).substr(-2, 2);
+
+                    var elapsed = performance.now() / 1000 + realityCheckElapsed;
+
+                    var hours = Math.floor(elapsed / 3600);
+                    var minutes = Math.floor((elapsed - (hours * 3600)) / 60);
+                    var seconds = Math.floor(elapsed - (hours * 3600) - (minutes * 60))
+
+                    if (hours > 0) {
+                        document.getElementById('elapsedDiv').innerHTML = hours + ":" + ("00" + minutes).substr(-2, 2) + ":" + ("00" + seconds).substr(-2, 2);
+                    } else {
+                        document.getElementById('elapsedDiv').innerHTML = ("00" + minutes).substr(-2, 2) + ":" + ("00" + seconds).substr(-2, 2);
+                    }
+                    setTimeout(displayTime, 100);
+                }
+
+                function decodeURL(data) {
+                    data = unescape(data);
+                    data = decodeURIComponent(data);
+                    return (data);
+                }
+
+                function showRealityCheck() {
+                    if (enabled) {
+                        try {
+                            realityCheckOpen = true;
+                            var elapsedTime = (performance.now() - startTime) / 1000 + realityCheckElapsed;
+
+                            var elapsedSeconds = elapsedTime % 60;
+                            var elapsedMinutes = Math.floor(elapsedTime / 60) % 60;
+                            var elapsedHours = Math.floor(elapsedTime / 3600);
+
+                            var timeString = "";
+
+                            switch (elapsedHours) {
+                                case 0:
+                                    break;
+                                case 1:
+                                    timeString = "1 hour";
+                                    break;
+                                default:
+                                    timeString = elapsedHours + " hours";
+                                    break;
+                            }
+
+                            if (elapsedMinutes > 0 && elapsedHours > 0) {
+                                timeString = timeString + " and ";
+                            }
+
+                            switch (elapsedMinutes) {
+                                case 0:
+                                    break;
+                                case 1:
+                                    timeString = timeString + "1 minute";
+                                    break;
+                                default:
+                                    timeString = timeString + elapsedMinutes + " minutes";
+                                    break;
+                            }
+
+                            document.getElementById('dialogStrong').innerHTML =
+                                translate('rcMessage1') + Math.round(realityCheckLimit / 60) +
+                                translate('rcMessage2') + timeString + "." +
+                                translate('rcMessage3');
+                            document.getElementById('dialogNormal').innerHTML = translate('rcMessage4') +
+                                '<a id="rcHistoryLink" target="_top">' + translate('rcHistory') + '</a>' +
+                                translate('rcMessage5');
+                            document.getElementById('dialogButton1Text').innerHTML = translate('rcButton1');
+                            document.getElementById('dialogButton2Text').innerHTML = translate('rcButton2');
+
+                            document.getElementById('rcHistoryLink').href = getURL('rcHistory');
+                            //Set Target
+                            document.getElementById('rcHistoryLink').setAttribute('target', getTargetValue('rcHistory'));
+
+                            document.getElementById('dialogButton1').href = getURL('rcButton1');
+                            document.getElementById('dialogButton1').style.display = "block";
+                            //TODO: Set Target
+                            document.getElementById('dialogButton1').setAttribute('target', getTargetValue('rcButton1'));
+                            document.getElementById('dialogButton2').href = getURL('rcButton2');
+                            //document.getElementById('dialogButton2').setAttribute('target', '_top');																	
+                            //setTargetValue(document.getElementById('dialogButton2'),'rcButton2','target');
+                            document.getElementById('dialogButton2').style.display = "block";
+                            //Set Target
+                            document.getElementById('dialogButton2').setAttribute('target', getTargetValue('rcButton2'));
+
+                            document.getElementById('dialogBox').style.display = "block";
+
+                            var thisPop = slider.hidePopup();
+                            slider.showPopup(document.getElementById('dialogBox'));
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    } else {
+                        setTimeout(showRealityCheck, 50);
+                    }
+                    window.clearTimeout(realityTimer);
+                    realityTimer = window.setTimeout(showRealityCheck, realityCheckLimit * 1000);
+                }
+
+                function translate(tag) {
+                    var trans = configData['INT']['controls'][tag.replace('Text', '')];
+                    var text = "No Text";
+                    try {
+                        text = trans['en']['text'];
+                    } catch (err) {
+                        // No English URL provided
+                    }
+                    try {
+                        text = trans[language]['text'];
+                    } catch (err) {
+                        // No native URL provided
+                    }
+                    return text;
+                }
+
+                function getTargetValue(tag) {
+                    var objTargets = configData['INT']['controls'][tag.replace('Link', '')];
+                    var objTarget = "_top";
+                    try {
+                        objTarget = objTargets['en']['target'];
+                    } catch (err) {
+                        // No English
+                    }
+                    try {
+                        objTarget = objTargets[language]['target'];
+                    } catch (err) {
+                        // No native
+                    }
+
+                    return objTarget;
+                }
+
+                function getURL(tag) {
+                    var urls = configData['INT']['controls'][tag.replace('Link', '')];
+                    var url = "No URL";
+                    try {
+                        if (typeof(urls['en']['url']) != 'undefined') {
+                            url = urls['en']['url'];
+                        }
+                    } catch (err) {
+                        // No English URL provided
+                    }
+                    try {
+                        if (typeof(urls[language]['url']) != 'undefined') {
+                            url = urls[language]['url'];
+                        }
+                    } catch (err) {
+                        // No native URL provided
+                    }
+
+                    for (var j = 0; j < params.length; j++) {
+                        try {
+                            url = url.replace('[' + params[j].split('=')[0] + ']', decodeURL(params[j].split('=')[1]));
+                        } catch (err) {
+                            //
+                        }
+                    }
+
+                    if (url.indexOf('[') == 0) {
+                        try {
+                            if (typeof(urls['en']['url_static']) != 'undefined') {
+                                url = urls['en']['url_static'];
+                            }
+                        } catch (err) {
+                            // No English URL provided
+                        }
+                        try {
+                            if (typeof(urls[language]['url_static']) != 'undefined') {
+                                url = urls[language]['url_static'];
+                            }
+                        } catch (err) {
+                            // No native URL provided
+                        }
+                    }
+
+
+                    return url;
+                }
+
+                function getURLByKey(key) {
+                    var key = key.replace('[', '').replace(']', '');
+                    var url = "No URL";
+                    for (var i = 0; i < params.length; i++) {
+                        try {
+                            if (params[i].toUpperCase().indexOf(key.toUpperCase()) == 0) {
+                                return decodeURL(params[i].split('=')[1]);
+                            } else if (params[i].toUpperCase().indexOf((skinCode + "_" + key).toUpperCase()) == 0) {
+                                return decodeURL(params[i].split('=')[1]);
+                            }
+                        } catch (err) {
+                            return url;
+                        }
+                    }
+                }
+
+                function buildURL(url, key) {
+                    var newURL = url;
+                    try {
+                        if (url.indexOf('?') == -1) {
+                            newURL += "?";
+                        } else {
+                            newURL += "&";
+                        }
+                        var regex = new RegExp(key + "=([^&]+)");
+                        newURL += key + '=' + location.search.match(regex)[1];
+                    } catch (err) {
+                        console.warn("Unable to find key: " + key);
+                        newURL = url;
+                    }
+                    return newURL;
+                }
+
+                document.getElementById('dialogButton1').addEventListener('click',
+                    function(event) {
+                        if (document.getElementById('dialogButton1').href == "javascript:void(0)") {
+                            //prevent built-in navigation and close dialog box.
+                            event.preventDefault();
+                            document.getElementById('dialogBox').style.display = "none";
+                            IGTbridge.console.activate(document.getElementById('content').offsetHeight + "px");
+                            slider.hideConsole();
+                        }
+                    }
+                );
+
+                document.getElementById('dialogButton2').addEventListener('click',
+                    function(event) {
+                        if (document.getElementById('dialogButton2').href == "javascript:void(0)") {
+                            //prevent built-in navigation and close dialog box.
+                            event.preventDefault();
+                            //document.getElementById('dialogBox').style.display = "none";
+
+                            var thisPop = slider.hidePopup();
+                            //IGTbridge.console.activate(document.getElementById('content').offsetHeight + "px");
+                            slider.hideConsole();
+                        }
+                    }
+                );
+
+
+                /**
+                 * @funciton bindControlToView
+                 * @param controlId - DOM id for the control, if it is already defined in DOM (as a place holder), it
+                 * will be use it without to create a new one
+                 * @param label - the label string
+                 * @valElement  - the value element
+                 * @parentElemtn - optional, DOM elememnt for appending the control into it if it is provided
+                 * @return void
+                 *
+                 * @example
+                 * bindControlToView("balance", "Balance", balanceText, document.getElementById("balances"));
+                 */
+
+                var bindControlToView = function(controlId, label, valElement, parentElement) {
+                    var control = document.getElementById(controlId);
+                    if (!control) {
+                        control = createControl(label, valElement);
+                        control.id = controlId;
+                    } else {
+                        if (label) {
+                            var l = document.createElement('label');
+                            l.appendChild(document.createTextNode(label));
+                            control.appendChild(l);
+                        }
+                        control.appendChild(valElement);
+                    }
+
+                    if (parentElement && !parentElement.contains(control)) {
+                        parentElement.appendChild(control);
+                    }
+                }
+
+                var createControl = function(label, element) {
+                    var l = document.createElement('label');
+                    s = document.createElement('span');
+
+                    l.appendChild(document.createTextNode(label));
+                    s.appendChild(l);
+                    s.appendChild(element);
+                    return s;
+                };
+
+                IGTbridge.consoleReady();
+                enabled = 1;
+
+                var slider = com.igt.console.slider(
+                    IGTbridge,
+                    document.getElementById('slider'),
+                    document.getElementById('activate'),
+                    //document.getElementById('deactivate')
+                    document.createElement('div')
+                );
+
+                var enableConsole = function(enable) {
+                    enabled = enable;
+                    //activate.className = enabled ? 'enabled' : 'disabled';
+                };
+
+                messageButtons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        messageQueued = 0;
+                        slider.hidePopup();
+                        //tell the game it's ok to continue
+                        IGTbridge.console.resume();
+                    });
+                });
+
+
+                (function() {
+                    var handlers = {
+                        displayMessage: function(code, reference, message, options) {
+                            var optionsList, showMessage;
+                            showMessage = message;
+                            optionsList = options;
+
+                            if (code == 1606) {
+                                //create a popop
+                                var messageBox = document.createElement('div');
+                                var centeringDiv = document.createElement("div");
+                                centeringDiv.style.height = "inherit";
+                                centeringDiv.style.width = "inherit";
+
+                                centeringDiv.style.display = "box"; //SKATE-727. We could use having prefix-free :/
+                                centeringDiv.style.display = "flex";
+                                centeringDiv.style.display = "-webkit-box";
+                                centeringDiv.style.display = "-moz-box";
+                                centeringDiv.style.display = "-ms-flexbox"; //IE10. Needs to be last, too
+
+                                centeringDiv.style.webkitBoxAlign = "center";
+                                centeringDiv.style.webkitBoxPack = "center";
+                                centeringDiv.style.MozBoxAlign = "center";
+                                centeringDiv.style.MozBoxPack = "center";
+                                centeringDiv.style.msFlexDirection = "column"; //IE11
+                                centeringDiv.style.msFlexAlign = "center";
+                                centeringDiv.style.msFlexPack = "center";
+                                centeringDiv.appendChild(messageBox);
+                                messageBox.className = 'vcentered';
+
+                                messageText = document.createElement('div');
+                                messageText.style.paddingBottom = "30px";
+
+                                function makeButton(labelText, callback) {
+                                    var button = document.createElement('button');
+                                    button.innerHTML = labelText;
+                                    button.addEventListener('click', callback);
+                                    return button;
+                                }
+                                //showMessage='CMA|https://xkcd.com/501/|FAKE CMA MESSAGE<br>Do you want to accept a £20 bonus?';
+                                if (showMessage.indexOf('CMA|') === 0) {
+                                    var cmaData;
+                                    cmaData = showMessage.split('|');
+                                    showMessage = cmaData[2];
+                                }
+
+                                messageText.innerHTML = showMessage;
+                                messageBox.appendChild(messageText);
+
+                                messageBox.appendChild(makeButton('OK', function() {
+                                    slider.hidePopup();
+                                    mxfMessagePopup.innerHTML = ''; //dirty destruction
+                                    IGTbridge.console.resume(0);
+                                }));
+                                /*
+                                messageBox.appendChild(makeButton('Reject', function() {
+                                	//slider.hidePopup();
+                                	//mxfMessagePopup.innerHTML = ''; //dirty destruction
+                                	IGTbridge.doCommand('closeGame');
+                                }));
+                                messageBox.appendChild(makeButton('T+Cs', function() {
+                                	window.open(cmaData[1],'_blank');
+                                }));
+                                */
+                                messageReference = document.createElement('div');
+                                messageReference.innerText = reference;
+                                messageBox.appendChild(messageReference);
+
+                                mxfMessagePopup.appendChild(centeringDiv);
+                                slider.showPopup(mxfMessagePopup, true);
+
+                            } else {
+                                IGTbridge.console.resume();
+                            }
+
+                        }
+                    };
+                    //handle message
+                    IGTbridge.addEvents(handlers);
+                })();
+
+
+                // Desktop console data
+                (function() {
+                    IGTbridge.addEvents({
+
+                        language: function(data) {
+                            bindControlToView("language", null, document.createTextNode(data.language));
+                            language = data.language;
+                        },
+
+                        stake: (function() {
+                            var outcomeTexts = {};
+                            return function(data) {
+                                (function(propsPair) {
+                                    for (var i = 0; i < propsPair.length; i++) {
+                                        var valText = outcomeTexts[propsPair[i][0]];
+                                        if (!valText) {
+                                            var valWrapper = document.createElement('span');
+                                            if (propsPair[i][3]) {
+                                                valWrapper.className = "meter";
+                                            }
+                                            valText = document.createTextNode('');
+                                            valWrapper.appendChild(valText);
+
+                                            bindControlToView(propsPair[i][1], propsPair[i][2], valWrapper);
+                                        }
+                                        valText.data = data.stake;
+                                        outcomeTexts[propsPair[i][0]] = valText;
+
+                                        slider.updateLayout();
+                                    }
+                                })([
+                                    ["Settled", "stake", "Stake", true]
+                                ]);
+                            }
+                        })(),
+                    });
+
+                })();
+
+
+                //console events
+                IGTbridge.addEvents({
+                    consoleResized: function(_height) {
+                        if (activating) {
+                            slider.style.webkitTransition = 'top .2s linear';
+                            slider.style.top = 0; //slide down
+                            activating = 0;
+                        }
+                    },
+
+                    beforeInitGame: function() {
+                        try {
+                            var keepAliveURLKey = configData['INT']['keepAlive']['url'];
+                            keepAliveURL = getURLByKey(keepAliveURLKey);
+                        } catch (err) {
+                            console.log("keepAlive can't work  ");
+                        }
+
+                        try {
+                            var keepAliveTimerFlag = configData['INT']['keepAlive']['timer']['enabled'];
+                            if (keepAliveTimerFlag == true) {
+                                var keepAliveInterval = configData['INT']['keepAlive']['timer']['interval'];
+                                keepAlive.startTimerKeepAlive(keepAliveURL, keepAliveInterval);
+                            }
+                        } catch (err) {
+                            console.log("startTimerKeepAlive can't work  ");
+                        }
+
+                        try {
+                            keepAliveEventsFlag = configData['INT']['keepAlive']['events']['enabled'];
+                            if (keepAliveEventsFlag == true) {
+                                paytableSpan = document.getElementById('paytableSpan');
+                                paytableSpan.addEventListener('click',
+                                    function(event) {
+                                        keepAlive.triggerKeepAlive(keepAliveURL);
+
+                                    }
+                                );
+
+                                howToPlaySpan = document.getElementById('howToPlaySpan');
+                                howToPlaySpan.addEventListener('click',
+                                    function(event) {
+                                        keepAlive.triggerKeepAlive(keepAliveURL);
+
+                                    }
+                                );
+                            }
+                        } catch (err) {
+                            console.log("startEventKeepAlive can't work  ");
+                        }
+
+                        try {
+                            if (configData['INT']['controls']['sessionTerminated']['visible'] == true) {
+                                IGTbridge.commands.setHandler('closeGame', function() {
+                                    document.getElementById('dialogStrong').innerHTML = translate('sessionTerminated');
+                                    document.getElementById('dialogNormal').innerHTML = translate('sessionTerminatedMsg');
+                                    document.getElementById('dialogButton1').style.visibility = 'hidden';
+                                    document.getElementById('dialogButton2').style.visibility = 'hidden';
+                                    var thisPop = slider.hidePopup();
+                                    slider.showPopup(document.getElementById('dialogBox'));
+                                });
+                            }
+                        } catch (err) {
+                            //
+                        }
+
+                        var styleSheet;
+                        for (var i = 0; i < document.styleSheets.length; i++) {
+                            var sheet = document.styleSheets[i];
+                            if (sheet.title == "consoleCSS") {
+                                styleSheet = sheet;
+                            }
+                        }
+
+                        var styles = configData['INT']['styles'];
+                        Object.keys(styles).forEach(
+                            function(key, index) {
+                                var rules = styles[key];
+                                var newRule = key + "{"
+                                Object.keys(rules).forEach(
+                                    function(rule, index) {
+                                        newRule += rule + ":" + rules[rule] + ";";
+                                    }
+                                );
+                                newRule += "}";
+                                styleSheet.insertRule(newRule, styleSheet.cssRules.length);
+                            }
+                        );
+
+                        try {
+                            if (configData['INT']['controls']['logo']['visible']) {
+                                styleSheet.insertRule('#logoSpan {background-image: url("/skins/' + skinCode + '/assets/' +
+                                    (configData['INT']['controls']['logo']['name'] ||
+                                        'logo.png') + '")}', styleSheet.cssRules.length);
+                            }
+                        } catch (err) {
+                            //
+                        }
+
+                        styleSheet.insertRule('.soundDiv:before {content: "' + translate("soundOn") + '";}', styleSheet.cssRules.length);
+                        styleSheet.insertRule('.soundDiv:after {content: "' + translate("soundOff") + '";}', styleSheet.cssRules.length);
+
+                        var controls = configData['INT']['controls'];
+                        Object.keys(controls).forEach(
+                            function(key, index) {
+                                try {
+                                    if (!controls[key]['visible']) {
+                                        document.getElementById(key + "Span").style.display = "none";
+                                    }
+                                } catch (err) {
+                                    // Ignore, not a valid display object
+                                }
+                            }
+                        );
+
+                        var translationObjs = document.getElementsByClassName("translate");
+                        for (var i = 0; i < translationObjs.length; i++) {
+                            translationObjs[i].innerHTML = translate(translationObjs[i].id);
+                        }
+
+                        translationObjs = document.getElementsByClassName("getURL");
+                        for (var i = 0; i < translationObjs.length; i++) {
+                            var thisURL = getURL(translationObjs[i].id);
+                            translationObjs[i].href = getURL(translationObjs[i].id);
+                            try {
+                                translationObjs[i].setAttribute('target', getTargetValue(translationObjs[i].id));
+                            } catch (err) {}
+                        }
+
+                        for (var i = 0; i < params.length; i++) {
+                            try {
+                                url = url.replace('[' + params[i].split('=')[0] + ']', decodeURL(params[i].split('=')[1]));
+                            } catch (err) {
+                                // No subs
+                            }
+                        }
+
+                        IGTbridge.console.resume();
+                    },
+
+                    wagerIsStarting: function() {
+                        slider.hidePopup();
+                        slider.hideConsole();
+                        enableConsole(0);
+                        document.getElementById("payoutSpan").getElementsByTagName("input")[0].value = "";
+                        //need to test whether to wait for the console to minimise
+                        if (!deactivating) {
+                            IGTbridge.console.resume();
+                        }
+
+                        try {
+                            if (keepAliveEventsFlag == true) {
+                                keepAlive.triggerKeepAlive(keepAliveURL);
+                            }
+                        } catch (err) {}
+                    },
+
+                    //MXF should this just get the outcome. Seems simpler that way
+                    wagerIsComplete: function() {
+                        enableConsole(1);
+
+                        messageQueued
+                            ?
+                            slider.showPopup(messagePopup) :
+                            IGTbridge.console.resume();
+                    },
+
+                    wagerIsAborted: function() {
+                        enableConsole(1);
+                        IGTbridge.console.resume();
+                    },
+
+                    gameOutcome: (function() {
+                        var balanceTexts = {};
+
+
+                        return function(outcome) {
+                            if (isFirstTimeLaunch) {
+                                var fsWin = 0;
+                                if (location.search.match(/fsWin=([^&]+)/) != null) {
+                                    fsWin = location.search.match(/fsWin=([^&]+)/)[1];
+                                    if (isNaN(fsWin)) {
+                                        console.log("fsWin is Not a Number, fsWin = " + fsWin);
+                                        fsWin = 0;
+                                    }
+                                }
+                                totalPayout = fsWin;
+                                isFirstTimeLaunch = false;
+                            } else {
+                                var payout = parseFloat(outcome.OutcomeDetail.Payout) * 1;
+                                if (outcome.PromotionalFreeSpin && outcome.PromotionalFreeSpin.gip == false) {
+                                    totalPayout = parseFloat(outcome.PromotionalFreeSpin.cumulativeWin) * 1;
+                                } else {
+                                    totalPayout = payout + parseFloat(totalPayout); //Kept getting concated instead of adding
+                                }
+
+                            }
+
+                            var payoutField = document.getElementById("payoutSpan").getElementsByTagName("input")[0];
+                            payoutField.value = IGTbridge.currency.formatL(outcome.OutcomeDetail.Payout);
+                            payoutField.style.width = ((payoutField.value.length + 1) * .5) + 'em';
+
+                            var transactionField = document.getElementById("transactionSpan").getElementsByTagName("input")[0];
+                            transactionField.value = outcome.OutcomeDetail.TransactionId;
+
+                            var balances = outcome.Balances.Balance;
+                            lastOutcomeDetail = outcome.OutcomeDetail;
+
+                            var fsElements = document.getElementsByClassName("fsOnly")
+                            var rpElements = document.getElementsByClassName("rpOnly")
+                            if (outcome.PromotionalFreeSpin) {
+
+                                for (var i = 0; i < fsElements.length; i++) {
+                                    //fsElements[i].style.display = "block";
+                                }
+                                for (var i = 0; i < rpElements.length; i++) {
+                                    rpElements[i].style.display = "none";
+                                }
+                                var fsBalanceField = document.getElementById("pfsBalanceSpan").getElementsByTagName("input")[0];
+                                if (outcome.Balances.Balance.BONUS) {
+                                    fsBalanceField.value = IGTbridge.currency.formatL(outcome.Balances.Balance.BONUS.amount + outcome.Balances.Balance.CASH.amount);
+                                } else {
+                                    fsBalanceField.value = IGTbridge.currency.formatL(outcome.Balances.Balance.CASH.amount);
+                                }
+
+                                var fsWinField = document.getElementById("pfsWinSpan").getElementsByTagName("input")[0];
+                                fsWinField.value = IGTbridge.currency.formatL(totalPayout * 1);
+                            } else {
+                                for (var i = 0; i < fsElements.length; i++) {
+                                    fsElements[i].style.display = "none";
+                                }
+                                for (var i = 0; i < rpElements.length; i++) {
+                                    //rpElements[i].style.display = "block";
+                                }
+                            }
+                            IGTbridge.console.resume();
+                        }
+                    })(),
+
+                    orientationchange: function() {
+                        slider.updateLayout
+                    },
+
+                    navigate: function(where) {
+                        switch (where) {
+                            case '#home':
+                                IGTbridge.console.navigate(home.href);
+                                break;
+                            default:
+                                console.warn('Console doesn\'t know how to how to navigate to ' + where);
+                        }
+                    },
+
+                    register: function(IGTcontrol) {
+                        var element;
+
+                        switch (IGTcontrol.type) {
+
+                            case 'boolean':
+                                element = document.createElement('input');
+                                element.setAttribute('type', 'checkbox');
+                                element.setAttribute('name', IGTcontrol.name);
+                                element.addEventListener('change', function() {
+                                    IGTcontrol.setValue(this.checked);
+                                });
+                                element.checked = IGTcontrol.value;
+                                element.disabled = !IGTcontrol.enabled;
+                                IGTcontrol.addEvent('change', function(value) {
+                                    element.checked = value;
+                                });
+                                IGTcontrol.addEvent('enable', function(enabled) {
+                                    element.disabled = !enabled;
+                                });
+                                options.appendChild(createControl(IGTcontrol.text, element));
+                                break;
+
+                            case 'list':
+                                switch (IGTcontrol.name) {
+                                    case 'sound':
+                                        var thisSpan = document.getElementById('soundSpan');
+                                        var thisButton = document.getElementById('sound');
+                                        try {
+                                            if (IGTcontrol.value == 0) {
+                                                thisSpan.checked = false;
+                                                IGTcontrol.setValue("0");
+                                                document.getElementById('sound').checked = true;
+                                            } else {
+                                                thisSpan.checked = true;
+                                                IGTcontrol.setValue("1");
+                                                document.getElementById('sound').checked = false;
+                                            }
+                                            thisButton.addEventListener('change', function() {
+                                                if (thisButton.checked) {
+                                                    thisSpan.checked = false;
+                                                    IGTcontrol.setValue("0");
+                                                } else {
+                                                    thisSpan.checked = true;
+                                                    IGTcontrol.setValue("1");
+                                                }
+                                            });
+                                            IGTcontrol.addEvent('change', function(value) {
+                                                if (value == 1) {
+                                                    document.getElementById('sound').checked = false;
+                                                } else {
+                                                    document.getElementById('sound').checked = true;
+                                                }
+                                                slider.updateLayout();
+                                            });
+
+                                        } catch (err) {
+                                            console.log("Unable to find button with ID of " + IGTcontrol.name + " --- " + err);
+                                        }
+                                        break;
+
+                                    default:
+                                        element = document.createElement('select');
+                                        element.setAttribute('name', IGTcontrol.name);
+                                        element.addEventListener('change', function() {
+                                            IGTcontrol.setValue(this.value);
+                                        });
+                                        IGTcontrol.values.forEach(
+                                            function(value, index) {
+                                                var option = document.createElement('option');
+                                                option.setAttribute('value', value);
+                                                option.appendChild(document.createTextNode(IGTcontrol.valueText[index]));
+                                                element.appendChild(option);
+                                            }
+                                        );
+                                        element.value = IGTcontrol.value;
+                                        element.disabled = !IGTcontrol.enabled;
+                                        IGTcontrol.addEvent('change', function(value) {
+                                            element.value = value;
+                                            slider.updateLayout();
+                                        });
+                                        IGTcontrol.addEvent('enable', function(enabled) {
+                                            element.disabled = !enabled;
+                                        });
+                                        break;
+                                }
+                                break;
+
+                            case 'command':
+                                var thisButton = document.getElementById(IGTcontrol.name);
+                                try {
+                                    thisButton.addEventListener('click', function() {
+                                        IGTcontrol.setValue();
+                                        slider.hideConsole();
+                                    });
+                                    thisButton.addEvent('enable', function(enabled) {
+                                        element.disabled = !enabled;
+                                    });
+                                } catch (err) {
+                                    console.log("Unable to find button with ID of " + IGTcontrol.name + " --- " + err);
+                                }
+
+                                try {
+                                    if (keepAliveEventsFlag == true) {
+                                        keepAlive.triggerKeepAlive(keepAliveURL);
+                                    }
+                                } catch (err) {}
+                                break;
+
+                            case 'balance':
+                            case 'stake':
+                                IGTcontrol.addEvent('change', function(value, formattedValue) {
+                                    var thisField = document.getElementById(IGTcontrol.name + "Span").getElementsByTagName("input")[0];
+                                    thisField.value = formattedValue;
+                                    thisField.style.width = ((thisField.value.length + 1) * .5) + 'em';
+                                    slider.updateLayout();
+                                });
+                                break;
+
+                            case 'PromotionalFreeSpinsCount':
+                                element = document.createElement('span');
+                                IGTcontrol.addEvent('change', function(value, formattedValue) {
+                                    var thisField = document.getElementById(IGTcontrol.name + "Span").getElementsByTagName("input")[0];
+                                    thisField.value = formattedValue;
+                                    thisField.style.width = ((thisField.value.length + 1) * .5) + 'em';
+                                    slider.updateLayout();
+
+                                    element.innerText = formattedValue;
+                                    slider.updateLayout();
+
+                                    if (value == 0 && enabled) {
+                                        if (totalPayout == 0) {
+                                            document.getElementById('dialogStrong').innerHTML = translate('pfsMessage1');
+                                        } else {
+                                            document.getElementById('dialogStrong').innerHTML = translate('pfsMessageWin').replace('[freeSpinWin]', IGTbridge.currency.formatL(totalPayout));
+                                        }
+                                        document.getElementById('dialogNormal').innerHTML = translate('pfsMessage2');
+                                        document.getElementById('dialogButton1').style.visibility = 'hidden';
+                                        document.getElementById('dialogButton2Text').innerHTML = translate('pfsButton2');
+
+                                        var pfsParams = ["playMode", "freespin_stake_per_line", "freespin_lines", "freespin_tokenID", "freespin_num"];
+                                        if (typeof configData['general']['pfsParams'] != 'undefined') {
+                                            pfsParams = configData['general']['pfsParams'];
+                                        }
+
+                                        var secureToken = getSecureToken();
+
+                                        var cashPlayURL = window.location.protocol + '//' + window.location.host + '/skb/gateway';
+
+                                        for (i = 0; i < params.length; i++) {
+                                            var thisParam = params[i].split("=")[0];
+                                            if (pfsParams.indexOf(thisParam) == -1) {
+                                                cashPlayURL = buildURL(cashPlayURL, thisParam);
+                                            }
+                                        }
+
+
+                                        cashPlayURL = addSecureToken(cashPlayURL, secureToken);
+
+                                        document.getElementById('dialogButton2').href = cashPlayURL;
+                                        //document.getElementById('dialogButton2').setAttribute('target', '_self');
+                                        //Set Target
+                                        document.getElementById('dialogButton2').setAttribute('target', getTargetValue('pfsButton2'));
+                                        //setTargetValue(document.getElementById('dialogButton2'),'rcButton2','target2');
+
+                                        var thisPop = slider.hidePopup();
+                                        slider.showPopup(document.getElementById('dialogBox'));
+
+                                    } else if (value > 0 && firstLaunch && enabled) {
+                                        firstLaunch = false;
+
+                                        document.getElementById('dialogStrong').innerHTML = translate('pfsWelcome1');
+                                        document.getElementById('dialogNormal').innerHTML = translate('pfsWelcome2').replace('[freeSpins]', value);
+                                        document.getElementById('dialogButton1').style.visibility = 'hidden';
+                                        document.getElementById('dialogButton2Text').innerHTML = translate('pfsWelcomeButton2');
+                                        document.getElementById('dialogButton2').href = getURL('pfsWelcomeButton2');
+                                        //Note: Set Target not needed as this is Welcome screen
+
+                                        var thisPop = slider.hidePopup();
+                                        slider.showPopup(document.getElementById('dialogBox'));
+                                    }
+                                });
+                                break;
+
+                            case 'range':
+                            default:
+                        }
+                        //whenever content is appended, move the slider up
+                        element && slider.updateLayout();
+                    }
+                });
+
+                function getSecureToken() {
+                    secureToken = "";
+                    key = "";
+                    //secureTokenNum = -1;
+                    //newTokenNum = -1;
+                    try {
+                        secureTokenFPY = configData['general']['secureToken']['secureTokenFPY'];
+                        key = configData['general']['secureToken']['secureTokenCash'];
+                        if (secureTokenFPY != "" && key != "") {
+                            for (i = 0; i < params.length; i++) {
+                                var thisParam = params[i].split("=")[0];
+                                if (thisParam == secureTokenFPY) {
+                                    secureToken = params[i].split("=")[1];
+                                    params.splice(i, 1, "1=1");
+                                }
+                            }
+                            return key + "=" + secureToken;
+                        } else {
+                            return "";
+                        }
+                    } catch (err) {
+                        return "";
+                    }
+                }
+
+                function addSecureToken(url, secureToken) {
+                    var newURL = url;
+                    try {
+                        if (secureToken == "") {
+                            return newURL;
+                        }
+
+                        if (url.indexOf('?') == -1) {
+                            newURL += "?";
+                        } else {
+                            newURL += "&";
+                        }
+                        newURL += secureToken;
+                    } catch (err) {
+                        console.warn("Unable to addSecureToken: " + secureToken);
+                        newURL = url;
+                    }
+                    return newURL;
+                }
+
+
+                var sendCloseMessage = function sendCloseMessage() {
+                    try {
+                        window.parent.postMessage('EXIT_GAME', '*');
+                        if (window.parent.parent == window.parent) {
+                            return;
+                        }
+                        window.parent.parent.postMessage('EXIT_GAME', '*');
+
+                        if (window.parent.parent.parent == window.parent.parent) {
+                            return;
+                        }
+                        window.parent.parent.parent.postMessage('EXIT_GAME', '*');
+
+                        if (window.parent.parent.parent.parent == window.parent.parent.parent) {
+                            return;
+                        }
+                        window.parent.parent.parent.parent.postMessage('EXIT_GAME', '*');
+                        return;
+                    } catch (e) {
+                        return;
+                    }
+                }
+
+                var handlers = {
+                    'closeGame': sendCloseMessage
+                };
+                IGTbridge.commands.setHandlers(handlers);
+
+                if (IGTbridge && IGTbridge.launchParameters && IGTbridge.launchParameters.cashiertype === 'T') { //CC
+                    com.igt.cashier.consoleUI(IGTbridge, slider);
+                } else {
+                    if (cashier) {
+                        cashier.style.visibility = 'hidden';
+                    }
+                }
+            }
+        );
+    </script>
+    <script>
+        includeScript("/IXF/1.4/igtBridge.js");
+    </script>
+</body>
+
+</html>

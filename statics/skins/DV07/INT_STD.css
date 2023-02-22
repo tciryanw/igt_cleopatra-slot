@@ -1,0 +1,419 @@
+		fieldset {
+		    display: inline-block;
+		    border: 1;
+		}
+
+		input,
+		textarea,
+		select,
+		label,
+		label+span {
+		    padding: 0.2em;
+		    line-height: 1em;
+		}
+
+		#cashier {
+		    position: absolute;
+		    display: table-cell;
+		    bottom: 0;
+		    left: 57%;
+		    font-size: 0.7em;
+		    color: white;
+		    background: black;
+		    padding: 0;
+		}
+
+		#options {
+		    padding: 4px 5px 5px 4px;
+		    vertical-align: top;
+		    display: table-cell;
+		    padding-right: 10px;
+		}
+
+		#activateContainer {
+		    text-align: right;
+		}
+
+		#activate {
+		    height: 90px;
+		}
+
+		#activate.enabled {
+		    color: white;
+		    background-color: rgba(0, 255, 0, 0.8);
+		}
+
+		#deactivate {
+		    height: 90px;
+		    color: black;
+		    display: inline-block;
+		}
+
+		#slider {
+		    position: relative;
+		    width: inherit;
+		    text-align: left; //min-width:675px;
+		}
+
+		.popup {
+		    position: absolute;
+		    top: 0;
+		    height: 100%;
+		    width: 100%;
+		    display: none;
+		    min-height: 90px;
+		}
+
+		.vcentered {
+		    min-width: 2.5em;
+		    max-width: 16.5em;
+		    /*margin-top: 10%;*/
+		    margin-left: 10px;
+		    margin-right: 10px;
+		    padding-bottom: 90px;
+		    background-color: black;
+		    font-size: 16px;
+		    border-radius: 20px;
+		    border: 2px white solid;
+		    padding: 20px;
+		}
+
+		button {
+		    width: 50px;
+		    background: white;
+		}
+
+		/* box-shadow trick add an outer border without needing extra elements */
+
+		#mxf-timer {
+		    float: left;
+		    line-height: 9px;
+		    border: 1px solid #888;
+		    box-shadow: 0px 0px 0px 1px #444;
+		    margin: 1px;
+		    border-radius: 3px;
+		    text-align: center;
+		    background-color: #222;
+		    line-height: 12px;
+		    width: 48px;
+		    font-size: 9px;
+		}
+
+		*[disabled] {
+		    background: #800;
+		    color: #FFF;
+		}
+
+		html {
+		    margin: 0;
+		    padding: 0;
+		    border: 0;
+		    width: 100%;
+		    overflow: hidden;
+		}
+
+		body {
+		    margin: 0;
+		    padding: 0;
+		    border: 0;
+		    width: 100%;
+		    color: white;
+		    text-align: center;
+		    -webkit-user-select: none;
+		    -webkit-text-size-adjust: none;
+		    -moz-text-size-adjust: none;
+		    -ms-text-size-adjust: none;
+		    -webkit-backface-visibility: visible;
+		    -moz-backface-visibility: visible;
+		    font-size: .5em;
+		    font-family: 'Roboto', helvetica, sans-serif;
+		    background: rgba(0, 11, 65, 0.6);
+		}
+
+		#content {
+		    display: inline-block;
+		    width: 100%;
+		    vertical-align: top;
+		    text-align: left;
+		    padding: 0;
+		    margin: 0; //min-width: 840px;
+		}
+
+		#background {
+		    display: inline-block;
+		    width: 100%;
+		    height: 32px;
+		    padding: 0;
+		    margin: 0;
+		    text-align: center;
+		    background: #2055C5;
+		    background: -moz-linear-gradient(top, #12389F 0%, #2055C5 100%);
+		    /* FF3.6-15 */
+		    background: -webkit-linear-gradient(top, #12389F 0%, #2055C5 100%);
+		    /* Chrome10-25,Safari5.1-6 */
+		    background: linear-gradient(to bottom, #12389F 0%, #2055C5 100%);
+		    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		}
+
+		.button {
+		    display: inline-block;
+		    padding: 5px 4px;
+		    color: #fff;
+		    text-shadow: 2px 2px 3px #008;
+		    box-shadow: inset 0 0 0 1px #27496d;
+		    border: none;
+		    border-radius: 15px;
+		    margin-top: 1px;
+		    min-width: 6em;
+		    text-align: center;
+		    cursor: pointer;
+		    border: 2px #55d solid;
+		    background: #005ca9;
+		    /* Old browsers */
+		    background: -moz-linear-gradient(top, #2055c5 0%, #12389f 100%);
+		    /* FF3.6-15 */
+		    background: -webkit-linear-gradient(top, #2055c5 0%, #12389f 100%);
+		    /* Chrome10-25,Safari5.1-6 */
+		    background: linear-gradient(to bottom, #2055c5 0%, #12389f 100%);
+		    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		}
+
+		.button:focus {
+		    outline: none
+		}
+
+		.button:hover {
+		    box-shadow: inset 0 0 0 1px #27496d, 2px 2px 5px #68d;
+		    box-shadow: inset 0 0 0 1px #27496d, 2px 2px 5px #68d;
+		}
+
+		.button:active {
+		    box-shadow: inset 0 0 0 1px #27496d, inset 0 3px 10px #193047;
+		}
+
+		/* The following group height definition is for setting the console height. It should match the value in the admin. */
+
+		/*
+		body, #debugBox, #activate, #deactivate, .popup, #contentx {
+			height: 32px;
+		}
+		*/
+
+		.valueField {
+		    border: none;
+		    border-radius: 4px;
+		    border-bottom: 1px solid #888;
+		    color: #fff;
+		    background-color: #000;
+		    text-align: right;
+		    padding: 2px 4px 0;
+		    font-family: Arial, Helvetica, sans-serif;
+		    font-size: 1.25em;
+		    margin: 2px 0;
+		}
+
+		.labelField {
+		    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+		    color: #fff;
+		}
+
+		.totalBalanceValue,
+		.pfsBalanceValue {
+		    min-width: 5em;
+		    max-width: 7em;
+		}
+
+		.payoutValue,
+		.pfsWinValue {
+		    min-width: 3em;
+		    max-width: 6em;
+		}
+
+		.stakeValue {
+		    min-width: 3em;
+		    max-width: 4em;
+		}
+
+		.pfsCountValue {
+		    min-width: 2em;
+		    max-width: 3em;
+		    text-align: center;
+		    padding: 3px 0 1px 0;
+		}
+
+		#transactionSpan {}
+
+		.transactionLabel,
+		.transactionValue {
+		    display: block;
+		    font-size: 1em;
+		    color: #000;
+		    padding: 0;
+		    text-align: left;
+		}
+
+		.transactionValue {
+		    background-color: transparent;
+		    border: none;
+		}
+
+		#soundSpan {
+		    display: inline-block;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		}
+
+		#soundSpan input[type=checkbox] {
+		    display: none;
+		}
+
+		.soundLabel {
+		    display: block;
+		    overflow: hidden;
+		    cursor: pointer;
+		    padding: 0;
+		    white-space: normal;
+		    width: 7em;
+		}
+
+		.soundDiv {
+		    width: 200%;
+		    margin-left: -100%;
+		}
+
+		.soundDiv:before,
+		.soundDiv:after {
+		    float: left;
+		    width: 50%;
+		    padding: 5px;
+		    color: white;
+		    -moz-box-sizing: border-box;
+		    -webkit-box-sizing: border-box;
+		    box-sizing: border-box;
+		    height: 19px;
+		}
+
+		.soundDiv:before {
+		    content: "Audio On";
+		}
+
+		.soundDiv:after {
+		    content: "Audio Off";
+		}
+
+		.sound-cb:checked+.soundLabel .soundDiv {
+		    margin-left: 0;
+		}
+
+		.sound-cb:checked+.soundLabel {
+		    right: 0;
+		}
+
+		.soundLabel:before {
+		    position: absolute;
+		    left: -9999px;
+		}
+
+		.leftAligned {
+		    float: left;
+		    margin: 6px 0 0 4px;
+		}
+
+		.rightAligned {
+		    float: right;
+		    margin: 4px 8px 0 0;
+		}
+
+		#timerSpan {
+		    border: 2px #55d solid;
+		    border-radius: 3px;
+		    margin: 4px;
+		    font-size: .85em;
+		    padding: 1px 4px;
+		    text-align: center;
+		    text-shadow: 1px 1px 2px #008;
+		    box-shadow: inset 0 0 0 1px #27496d background: -moz-linear-gradient(top, #2055c5 0%, #12389f 100%);
+		    /* FF3.6-15 */
+		    background: -webkit-linear-gradient(top, #2055c5 0%, #12389f 100%);
+		    /* Chrome10-25,Safari5.1-6 */
+		    background: linear-gradient(to bottom, #2055c5 0%, #12389f 100%);
+		    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		}
+
+		#dialogBox {
+		    display: none;
+		    position: relative;
+		    height: 100%;
+		    width: 100%;
+		    text-align: center; //background-color: rgba(0,0,0,0.6);
+		}
+
+		#dialogFrame {
+		    display: inline-block;
+		    position: relative;
+		    height: 100%;
+		    width: 24em; //min-height: 10em;
+		    background-color: rgba(255, 255, 255, 0.9);
+		    border-radius: 15px;
+		    color: #000;
+		    text-align: left;
+		    font-family: Arial, Helvetica, sans-serif;
+		    font-size: 1.2em;
+		    line-height: 1.5em;
+		    margin: 10% 0 90% 0;
+		}
+
+		#dialogStrong {
+		    position: relative;
+		    margin: 0;
+		    padding: 1.5em 1em 0;
+		    font-weight: bold;
+		    -webkit-user-select: none;
+		}
+
+		#dialogNormal {
+		    position: relative;
+		    font-weight: normal;
+		    padding: 1em;
+		    -webkit-user-select: none;
+		}
+
+		#dialogNav {
+		    display: inline-block;
+		    position: relative; //position: absolute;
+		    //bottom: 1em;
+		    left: 0;
+		    width: 100%;
+		    margin: 0 0 .5em;
+		}
+
+		#dialogSpacer {
+		    position: relative;
+		    height: 4em;
+		}
+
+		#dialogButton1 {
+		    //position: relative;
+		    float: left;
+		    margin: 0 1em;
+		}
+
+		#dialogButton2 {
+		    //position: relative;
+		    float: right;
+		    margin: 0 2em;
+		}
+
+		#dialogButton1Text,
+		#dialogButton2Text {
+		    line-height: 1.2em;
+		}
+
+		#logoSpan {
+		    display: inline-block;
+		    height: 32px;
+		    width: 75%;
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		}

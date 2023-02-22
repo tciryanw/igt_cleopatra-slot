@@ -1,0 +1,13 @@
+{
+  "urls": [
+    "audio7.mp3",
+    "audio7.ogg",
+    "audio7.m4a"
+  ],
+  "sprite": {
+    "BaseRollupLow": [
+      0,
+      921
+    ]
+  }
+}

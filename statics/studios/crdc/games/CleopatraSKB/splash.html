@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Splash</title>
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px auto;
+            padding: 0;
+            background: #000000;
+        }
+
+        #loadingCanvas {
+            position: absolute;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id='loadingCanvas' width='960' height='540'></canvas>
+    <script>
+        var assetPack = window.location.search.match(/&?assetPack=([^&]+)&?/)[1];
+        var canvas = document.getElementById("loadingCanvas");
+        var sm = 1; //size multiplier
+        if (assetPack === 'desktop') {
+            canvas.width = 1920;
+            canvas.height = 1080;
+            sm = 2;
+        }
+
+        var ctx = canvas.getContext('2d');
+
+        var loadingImg, copyRightText, progress = 0;
+
+        var fileNameSuffix = window._cacheFlag ? window._cacheFlag.queryStr : '';
+
+        function chooseI18n(cbFunction) {
+            var language = window.location.search.match(/&?language=([^&]+)&?/)[1];
+            var skin = window.location.search.match(/&?skincode=([^&]+)&?/)[1];
+            var i18nFolder;
+            httpGetJson('i18n/' + language + '.json', function(event) {
+                var httpReq = event.target;
+                if (httpReq.status !== 404) {
+                    var skinJSON = JSON.parse(httpReq.responseText);
+                    var skinArr = skinJSON[language];
+                    if (skinArr.indexOf(language + '/' + skin + '.json') > -1) {
+                        i18nFolder = 'i18n/' + language + '/' + skin;
+                    } else {
+                        i18nFolder = 'i18n/' + language + '/default';
+                    }
+                }
+                cbFunction(i18nFolder);
+            });
+        }
+
+        function chooseAsset(assetUrl, cbFunction) {
+            var finalUrl = 'assetPacks/' + assetUrl;
+            chooseI18n(function(i18nUrl) {
+                httpGetJson(i18nUrl + '.json', function(event) {
+                    var httpReq = event.target;
+                    if (httpReq.status !== 404) {
+                        var i18nJSON = JSON.parse(httpReq.responseText);
+                        if (i18nJSON.assetPacks) {
+                            var skin = i18nUrl.substring(i18nUrl.lastIndexOf('/') + 1);
+                            if (i18nJSON.assetPacks.indexOf(skin + '/assetPacks/' + assetPack + '.json') > -1) {
+                                httpGetJson(i18nUrl + '/assetPacks/' + assetPack + '.json', function(event) {
+                                    var httpReq = event.target;
+                                    if (httpReq.status !== 404) {
+                                        var assetJSON = JSON.parse(httpReq.responseText);
+                                        for (var k in assetJSON) {
+                                            if (assetJSON[k].indexOf(assetUrl) > -1) {
+                                                finalUrl = i18nUrl + '/assetPacks/' + assetUrl;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    cbFunction(finalUrl);
+                                });
+                            }
+                        } else {
+                            cbFunction(finalUrl);
+                        }
+                    }
+                });
+            });
+        }
+
+        function loadImg() {
+            var elem = new Image();
+            elem.onload = function() {
+                loadingImg = elem;
+            };
+            chooseAsset(assetPack + '/splash/loading.png', function(url) {
+                elem.src = url + fileNameSuffix;
+            });
+        }
+
+        function httpGetJson(url, successCallback) {
+            var httpReq = new XMLHttpRequest();
+            httpReq.withCredentials = true;
+            httpReq.addEventListener('load', function(event) {
+                successCallback(event);
+            });
+            httpReq.open('GET', url);
+            httpReq.send();
+        }
+
+        function loadText() {
+            var language = window.location.search.match(/&?language=([^&]+)&?/)[1];
+            var skin = window.location.search.match(/&?skincode=([^&]+)&?/)[1];
+            httpGetJson('i18n/' + language + '.json' + fileNameSuffix, function(event) {
+                var httpReq = event.target;
+                if (httpReq.status !== 404) {
+                    var spJsonUrl = 'i18n/' + language + '/default/splash.json' + fileNameSuffix;
+                    var skinJSON = JSON.parse(httpReq.responseText);
+                    var skinArr = skinJSON[language];
+                    for (var i = 0; i < skinArr.length; i++) {
+                        if (skinArr[i].indexOf(language + '/' + skin + '.json') > -1) {
+                            spJsonUrl = 'i18n/' + language + '/' + skin + '/splash.json' + fileNameSuffix;
+                            break;
+                        }
+                    }
+                    getSplashFooter(spJsonUrl);
+                }
+            });
+        }
+
+        function getSplashFooter(url) {
+            httpGetJson(url, function(event) {
+                var httpReq = event.target;
+                if (httpReq.status !== 404) {
+                    var splashJSON = JSON.parse(httpReq.responseText);
+                    Object.freeze(splashJSON);
+                    copyRightText = splashJSON.splashScreen.footer.shortVersion;
+                }
+            });
+        }
+
+        function drawProgressBG() {
+            ctx.beginPath();
+            ctx.fillStyle = '#666666';
+            ctx.moveTo(279 * sm, 422 * sm);
+            ctx.lineTo(681 * sm, 422 * sm);
+            ctx.arcTo(685 * sm, 422 * sm, 685 * sm, 426 * sm, 4 * sm);
+            ctx.arcTo(685 * sm, 430 * sm, 681 * sm, 430 * sm, 4 * sm);
+            ctx.lineTo(279 * sm, 430 * sm);
+            ctx.arcTo(275 * sm, 430 * sm, 275 * sm, 426 * sm, 4 * sm);
+            ctx.arcTo(275 * sm, 422 * sm, 279 * sm, 422 * sm, 4 * sm);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function drawProgress() {
+            var p = progress * 4;
+            ctx.beginPath();
+            var gradientFill = ctx.createLinearGradient(280 * sm, 424 * sm, (280 + p) * sm, 424 * sm);
+            gradientFill.addColorStop(0, "#FFD900");
+            gradientFill.addColorStop(0.25, "#FF9900");
+            gradientFill.addColorStop(0.5, "#FF3300");
+            gradientFill.addColorStop(0.75, "#FF9900");
+            gradientFill.addColorStop(1, "#FFD900");
+            ctx.fillStyle = gradientFill;
+            ctx.moveTo(280 * sm, 424 * sm);
+            ctx.lineTo((280 + p) * sm, 424 * sm);
+            ctx.arcTo((280 + p + 2) * sm, 424 * sm, (280 + p + 2) * sm, 426 * sm, 2 * sm);
+            ctx.arcTo((280 + p + 2) * sm, 428 * sm, (280 + p) * sm, 428 * sm, 2 * sm);
+            ctx.lineTo(280 * sm, 428 * sm);
+            ctx.arcTo(278 * sm, 428 * sm, 278 * sm, 426 * sm, 2 * sm);
+            ctx.arcTo(278 * sm, 424 * sm, 280 * sm, 424 * sm, 2 * sm);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function drawImage() {
+            if (loadingImg) {
+                ctx.drawImage(loadingImg, 220 * sm, 50 * sm, 520 * sm, 350 * sm);
+                loadingImg = null;
+                canvas.style.backgroundColor = 'black';
+            }
+        }
+
+        function drawText() {
+            if (copyRightText) {
+                ctx.save();
+                ctx.textBaseline = 'middle';
+                ctx.textAlign = 'center';
+                ctx.font = 16 * sm + 'px Arial';
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillText(copyRightText, 480 * sm, 450 * sm);
+                ctx.restore();
+                copyRightText = null;
+            }
+        }
+
+        function drawAll() {
+            drawImage();
+            drawProgressBG();
+            drawProgress();
+            drawText();
+
+            if (progress < 100) {
+                nextFrame(drawAll);
+            }
+        }
+
+        function nextFrame(callBack) {
+            if (window.requestAnimationFrame) {
+                requestAnimationFrame(callBack);
+            } else {
+                setTimeout(callBack, 100);
+            }
+        }
+        loadImg();
+        loadText();
+        nextFrame(drawAll);
+
+        window.addEventListener('message', function(e) {
+            var percentLoaded = e.data.loaded || null;
+            if (percentLoaded !== null) {
+                progress = Number(percentLoaded);
+            }
+        }, false);
+
+        function windowResized() {
+            var w = Number(document.documentElement.clientWidth);
+            var h = Number(document.documentElement.clientHeight);
+            var cs = canvas.style;
+            if (h / w > 0.5625) {
+                var scale = w / 1920;
+                cs.width = w + 'px';
+                cs.height = Math.floor(scale * 1080) + 'px';
+                cs.top = Math.floor((h - scale * 1080) / 2) + 'px';
+                cs.left = '0px';
+            } else {
+                var scale = h / 1080;
+                cs.width = Math.floor(scale * 1920) + 'px';
+                cs.height = h + 'px';
+                cs.top = '0px';
+                cs.left = Math.floor((w - scale * 1920) / 2) + 'px';
+            }
+        }
+
+        window.addEventListener('load', windowResized);
+        window.addEventListener('resize', windowResized);
+    </script>
+    <script type="text/javascript">
+        window._cacheFlag = {};
+        window._cacheFlag.revisionTag = "0";
+        var revisionTagMatch = window.location.search.match(/&?revisionTag=([\w-]+)&?/);
+        if (revisionTagMatch && revisionTagMatch[1]) {
+            window._cacheFlag.revisionTag = revisionTagMatch[1];
+        }
+        window._cacheFlag.gameVersion = "1.1.9";
+        window._cacheFlag.queryStr = "?v=" + window._cacheFlag.gameVersion + "&t=" + window._cacheFlag.revisionTag;
+    </script>
+</body>
+
+</html>

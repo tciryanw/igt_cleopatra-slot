@@ -1,0 +1,336 @@
+{
+    "general": {
+        "version": "DV07",
+        "pfsParams": [
+            "playMode",
+            "freespin_stake_per_line",
+            "freespin_lines",
+            "freespin_tokenID",
+            "freespin_num",
+            "freespin_bet"
+        ],
+		"secureToken":{
+			"secureTokenFPY":"",
+			"secureTokenCash":""
+		}
+    },
+    "INT": {
+        "controls": {
+            "timer": {
+                "visible": false
+            },
+            "logo": {
+                "visible": false
+            },
+            "totalBalance": {
+                "visible": false
+            },
+            "payout": {
+                "visible": false
+            },
+            "stake": {
+                "visible": false
+            },
+            "transaction": {
+                "visible": false
+            },
+            "sound": {
+                "visible": true
+            },
+            "soundOn": {
+                "en": {
+                    "text": "Audio On"
+                }
+            },
+            "soundOff": {
+                "en": {
+                    "text": "Audio Off"
+                }
+            },
+            "howToPlay": {
+                "visible": true,
+                "en": {
+                    "text": "Game Rules"
+                }
+            },
+            "paytable": {
+                "visible": true,
+                "en": {
+                    "text": "Paytable"
+                }
+            },
+            "responsible": {
+                "visible": false,
+                "en": {
+                    "text": "Responsible Gaming",
+                    "url": "[responsibleURL]",
+					"url_static":	"http://www.igt.com",
+                    "target": "_top"
+                }
+            },
+            "lobby": {
+                "visible": false,
+                "en": {
+                    "text": "Lobby",
+                    "url": "[lobbyURL]",
+					"url_static":	"http://www.igt.com",
+                    "target": "_top"
+                }
+            },
+            "custom1": {
+                "visible": false
+            },
+            "custom2": {
+                "visible": false
+            },
+            "custom3": {
+                "visible": false
+            },
+            "rcMessage1": {
+                "en": {
+                    "text": "You have requested a reality check after every "
+                }
+            },
+            "rcMessage2": {
+                "en": {
+                    "text": " minutes of play. This gaming session has now reached "
+                }
+            },
+            "rcMessage3": {
+                "en": {
+                    "text": " Please select \"Continue\" to keep playing or \"Stop Playing\" to exit the game."
+                }
+            },
+            "rcMinute": {
+                "en": {
+                    "text": "minute"
+                }
+            },
+            "rcMinutes": {
+                "en": {
+                    "text": "minutes"
+                }
+            },
+            "rcHour": {
+                "en": {
+                    "text": "hour"
+                }
+            },
+            "rcHours": {
+                "en": {
+                    "text": "hours"
+                }
+            },
+            "rcMessage4": {
+                "en": {
+                    "text": "You may also view your "
+                }
+            },
+            "rcHistory": {
+                "en": {
+                    "text": "Account History",
+                    "url": "[historyURL]",
+                    "target": "_top"
+                }
+            },
+            "rcMessage5": {
+                "en": {
+                    "text": " to review historic data."
+                }
+            },
+            "rcButton1": {
+                "en": {
+                    "text": "Stop Playing",
+                    "url": "[lobbyURL]",
+                    "target": "_top"
+                }
+            },
+            "rcButton2": {
+                "en": {
+                    "text": "Continue",
+                    "url": "javascript:void(0)",
+                    "target": "_top"
+                }
+            },
+            "pfsBalance": {
+                "visible": true,
+                "en": {
+                    "text": "Balance:"
+                }
+            },
+            "pfsCount": {
+                "visible": true,
+                "en": {
+                    "text": "Free Spins Remaining:"
+                }
+            },
+            "pfsWin": {
+                "visible": true,
+                "en": {
+                    "text": "Total Win:"
+                }
+            },
+            "pfsWelcome1": {
+                "en": {
+                    "text": "Free Spins"
+                }
+            },
+            "pfsWelcome2": {
+                "en": {
+                    "text": "Congratulations! You have [freeSpins] free spins. Good luck!"
+                }
+            },
+            "pfsWelcomeButton2": {
+                "en": {
+                    "text": "OK",
+                    "url": "javascript:void(0)"
+                }
+            },
+            "pfsMessage1": {
+                "en": {
+                    "text": "You have played all of your free spins."
+                }
+            },
+            "pfsMessageWin": {
+                "en": {
+                    "text": "You have played all of your free spins and won [freeSpinWin] in this session."
+                }
+            },
+            "pfsMessage2": {
+                "en": {
+                    "text": "Press \"OK\" to return to cash play."
+                }
+            },
+            "pfsButton2": {
+                "en": {
+                    "text": "OK",
+                    "target": "_parent"
+                }
+            },
+            "sessionTerminated": {
+                "visible": true,
+                "en": {
+                    "text": "Session Terminated"
+                }
+            },
+            "sessionTerminatedMsg": {
+                "en": {
+                    "text": "This session has been terminated, please close the game window."
+                }
+            }
+        },
+        "styles": {
+            ".button": {
+                "font-size": "12px",
+                "padding": "4px 4px 3px",
+                "margin-top": "0"
+            },
+            ".labelField, .valueField": {
+                "font-size": "12px"
+            },
+            ".transactionLabel, .transactionValue": {
+                "color": "#fff",
+                "font-size": "8px",
+                "margin-left": "8px"
+            },
+            ".soundDiv:before, .soundDiv:after": {
+                "height": "inherit",
+                "padding": "0"
+            }
+        },
+        "keepAlive": {
+            "url": "[ping]",
+            "timer": {
+                "enabled": false,
+                "interval": 5000
+            },
+            "events": {
+                "enabled": false
+            }
+        }
+    },
+
+    "MOB": {
+        "controls": {
+            "timer": {
+                "visible": true
+            },
+            "logo": {
+                "visible": false
+            },
+            "totalBalance": {
+                "visible": false
+            },
+            "payout": {
+                "visible": false
+            },
+            "stake": {
+                "visible": false
+            },
+            "pfsBalance": {
+                "visible": false
+            },
+            "pfsCount": {
+                "visible": false
+            },
+            "pfsWin": {
+                "visible": false
+            },
+            "transaction": {
+                "visible": false
+            },
+            "sound": {
+                "visible": true
+            },
+            "soundOn": {
+                "en": {
+                    "text": "Turn Audio Off"
+                }
+            },
+            "soundOff": {
+                "en": {
+                    "text": "Turn Audio On"
+                }
+            },
+            "howToPlay": {
+                "visible": true,
+                "en": {
+                    "text": "Game Rules"
+                }
+            },
+            "paytable": {
+                "visible": true
+            },
+            "responsible": {
+                "visible": false
+            },
+            "lobby": {
+                "visible": true,
+				"en": {
+                    "text": "Lobby",
+                    "url": "javascript:parent.parent.postMessage('gameClose', '*')"
+                }
+            },
+            "custom1": {
+                "visible": false
+            },
+            "custom2": {
+                "visible": false
+            },
+            "custom3": {
+                "visible": false
+            }
+        },
+        "styles": {},
+        "keepAlive": {
+            "url": "[ping]",
+            "timer": {
+                "enabled": false,
+                "interval": 5000
+            },
+            "events": {
+                "enabled": false
+            }
+        }
+    }
+}

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Game</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            width: 100vw;
+            height: 100vh;
+            margin: 0px;
+            border: none;
+            padding: 0px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-color: #000000;
+        }
+
+        #game,
+        #gameCanvas {
+            background-size: 100%, 100%;
+            position: absolute;
+        }
+
+        #game canvas {
+            position: absolute;
+            z-index: 3;
+        }
+
+        .clearfix {
+            zoom: 1
+        }
+
+        .clearfix:after {
+            width: 0;
+            height: 0;
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .commonH2P {
+            width: 100%;
+            height: 100%;
+            padding-top: 54px;
+            box-sizing: border-box;
+            background-color: #EEEEEE;
+            display: none;
+            position: relative;
+            z-index: 11;
+            font-family: arial, helvetica, sans-serif;
+        }
+
+        .commonH2P header {
+            width: 100%;
+            height: 48px;
+            line-height: 48px;
+            background: #535353;
+            background: -webkit-linear-gradient(#535353, #222222);
+            background: -o-linear-gradient(#535353, #222222);
+            background: -moz-linear-gradient(#535353, #222222);
+            background: linear-gradient(#535353, #222222);
+            color: #EEEEEE;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: #000 0px 1px 1px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+        }
+
+        .commonH2P .closeBtn {
+            width: 61px;
+            height: 27px;
+            line-height: 25px;
+            color: #EEEEEE;
+            font-size: 12px;
+            font-weight: bold;
+            text-shadow: #aaa 0px 1px 1px;
+            text-align: center;
+            border-radius: 6px;
+            border: 1px solid #0590d1;
+            background: -webkit-linear-gradient(#69bce3, #0590d1);
+            background: -moz-linear-gradient(#69bce3, #0590d1);
+            background: -o-linear-gradient(#69bce3, #0590d1);
+            background: linear-gradient(#69bce3, #0590d1);
+            cursor: pointer;
+            margin: 5px auto;
+            display: block;
+            outline: none;
+        }
+
+        .commonH2P article {
+            width: 100%;
+            height: 86%;
+            overflow-Y: scroll;
+            cursor: pointer;
+        }
+
+        .commonH2P section {
+            width: 95%;
+            margin: 6px auto;
+            background-color: #FFFFFF;
+            border: 1px solid #CCCCCC;
+            border-radius: 10px;
+            color: #555555;
+            padding-bottom: 25px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .commonH2P h1 {
+            color: #333333;
+            text-align: left;
+            font-size: 16px;
+            margin: 17px 15px;
+        }
+
+        .commonH2P h2 {
+            color: #333333;
+            text-align: left;
+            font-size: 15px;
+            margin: 17px 20px;
+        }
+
+        .commonH2P .small {
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .commonH2P h3 {
+            color: #333333;
+            text-align: left;
+            font-size: 13px;
+            margin: 17px 20px;
+        }
+
+        .commonH2P h4 {
+            color: #333333;
+            text-align: left;
+            font-size: 12px;
+            margin: 17px 20px;
+            text-decoration: underline;
+            font-weight: normal;
+        }
+
+        .commonH2P p {
+            color: #555555;
+            text-align: left;
+            font-size: 12px;
+            line-height: 15px;
+            margin: 17px 20px;
+        }
+
+        .commonH2P li {
+            color: #555555;
+            text-align: left;
+            font-size: 12px;
+            line-height: 15px;
+            margin: 17px 20px;
+        }
+
+        /*table settings*/
+
+        .commonH2P table {
+            width: 75%;
+            margin: 6px auto;
+            border: 1px solid black;
+            border-collapse: seperate;
+            border-spacing: 0;
+            border-radius: 11px;
+            font-size: 13px;
+        }
+
+        .commonH2P th {
+            height: 15px;
+            padding: 6px 0px 6px 0px;
+            background-color: #0590d1;
+            border: 0;
+            border-right: 1px solid #FFFFFF;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        .commonH2P th:first-child {
+            border-top-left-radius: 9px;
+        }
+
+        .commonH2P th:last-child {
+            border-top-right-radius: 9px;
+            border-right: 0;
+        }
+
+        .commonH2P td {
+            width: 50%;
+            padding: 19px 10px;
+            height: 26px;
+            line-height: 26px;
+            border-left: 0;
+            border-top: 0;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .commonH2P tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .commonH2P td:last-child {
+            border-right: 0;
+        }
+
+        #PayTableBaseGame td {
+            width: 20%;
+        }
+
+        /*img settings*/
+
+        .commonH2P img {
+            margin: 0 10px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-size: contain;
+            vertical-align: middle;
+        }
+
+        .commonH2P p img {
+            width: 45px;
+            height: 45px;
+        }
+
+        .commonH2P td img {
+            width: 76px;
+            height: 76px;
+        }
+
+        /*table pics*/
+
+        .commonH2P .paylinetables {
+            min-height: 58px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .commonH2P .paylinetables li {
+            width: 56px;
+            height: 58px;
+            margin: 0 4px 6px 4px;
+            display: inline-block;
+            text-align: center;
+            font-size: 16px;
+            line-height: 16px;
+        }
+
+        .commonH2P .paylinetables table {
+            width: 100%;
+            height: 34px;
+            border-collapse: collapse;
+            border-color: #000000;
+        }
+
+        .commonH2P .paylinetables td {
+            width: 20%;
+            height: auto;
+            padding: 0;
+        }
+
+        .commonH2P .paylinetables .blue {
+            background-color: #0089CC;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='game' class="tab">
+    </div>
+    <div id="gameRules" class="tab commonH2P">
+        <header id="gameRulesHeader"></header>
+        <article id="gameRulesArticle">
+        </article>
+        <button class="closeBtn"></button>
+    </div>
+    <div id="paytable" class="tab commonH2P">
+        <header id="paytableHeader"></header>
+        <article id="paytableArticle">
+        </article>
+        <button class="closeBtn"></button>
+    </div>
+    <script type="text/javascript"></script>
+    <script type="text/javascript" src="require.js?v=1.1.9"></script>
+    <script type="text/javascript">
+        window._cacheFlag = {};
+        window._cacheFlag.revisionTag = "0";
+        var revisionTagMatch = window.location.search.match(/&?revisionTag=([\w-]+)&?/);
+        if (revisionTagMatch && revisionTagMatch[1]) {
+            window._cacheFlag.revisionTag = revisionTagMatch[1];
+        }
+        window._cacheFlag.gameVersion = "1.1.9";
+        window._cacheFlag.changeList = "377573";
+        window._cacheFlag.buildNumber = "189";
+        window._cacheFlag.queryStr = "?v=" + window._cacheFlag.gameVersion + "&t=" + window._cacheFlag.revisionTag;
+        require.config({
+            "shim": {},
+            "paths": {
+                "postal": "messagebus/postal",
+                "postal.federation": "messagebus/postal.federation",
+                "xframe": "messagebus/postal.xframe",
+                "request-response": "messagebus/postal.request-response",
+                "riveter": "messagebus/riveter",
+                "underscore": "messagebus/underscore",
+                "lodash": "messagebus/lodash",
+                "promise": "messagebus/q"
+            },
+            urlArgs: "v=" + window._cacheFlag.gameVersion + "&t=" + window._cacheFlag.revisionTag,
+            waitSeconds: 15
+        });
+        require(["game"], function() {});
+    </script>
+</body>
+
+</html>

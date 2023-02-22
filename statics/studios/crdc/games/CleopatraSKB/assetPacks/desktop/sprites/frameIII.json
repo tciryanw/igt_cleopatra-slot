@@ -1,0 +1,20 @@
+{"frames": {
+
+"reelsFrameFreespinsBG.png":
+{
+	"frame": {"x":1,"y":1,"w":1645,"h":1080},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":1645,"h":1080},
+	"sourceSize": {"w":1650,"h":1080}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "frameIII.png",
+	"format": "RGBA8888",
+	"size": {"w":1647,"h":1082},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e45113930871b0c9bb216ff757b1afb9:fa0ac09ee24ad293441b096d20af0c32:c06a40c853d81a44cf5c512a560d5bbd$"
+}
+}

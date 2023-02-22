@@ -1,0 +1,86 @@
+{
+	"audioLoader": {
+		"yes": "Yes",
+		"no": "No",
+		"confirm": "Would you like sound?"
+	},
+	"Paytable": {
+		"RTPvalue": "{@minRTP}%",
+		"RTPrange": "{@minRTP}% to {@maxRTP}%"
+	},
+	"title": "Cleopatra",
+	"MenuCommand": {
+		"howToPlay": "Game Rules",
+		"payTable": "Paytable",
+		"audio":{
+			"sound":"Sound",
+			"on":"On",
+			"off":"Off"
+		}
+	},
+	"Error": {
+		"insufficientFunds": "Insufficient funds to spin."
+	},
+	"Game": {
+		"freeSpinLines": "{0} Lines",
+		"lineWinPreText": "Line ",
+		"lineWin": "Line Win Pays: {0}",
+		"lineWinPostText": "Pays: <currency>{0}</currency>{1}",
+		"scatterWin": "Scatter Win Pays: <currency>{0}</currency>{1}",
+		"freeSpinWin": "Scatter + Bonus Win Pays: <currency>{0}</currency>",
+		"bonusPrompt": "Press Button to Start Bonus",
+		"bonusWin": "Free Spin Pays: <currency>{0}</currency>",
+		"freeSpinCoinValue": "Triggering Line Bet: <currency>{0}</currency>",
+		"bigWin": "BIG WIN",
+		"freespinsWelcome": "BONUS TRIGGERED! <br/>15 FREE SPINS AWARDED",
+		"freespinsAward": "YOU WON <br/>15 EXTRA <br/>FREE SPINS",
+		"bonusCompleteWin": "CONGRATULATIONS! <br/>YOU HAVE WON <br/> <integer>{0}</integer>",
+		"buttonPatternsBet": "Lines",
+		"buttonBetPerPattern": "Coin Value",
+		"buttonOk": "OK",
+		"selectorPatternsBet": "LINES",
+		"selectorBetPerPattern": "LINE BET",
+		"consoleBalance": "BALANCE",
+		"consoleBet": "TOTAL BET",
+		"consoleBonus": "BONUS WIN",
+		"consoleBonusCount": "FREE SPINS",
+		"consoleMultiplier": "MULTIPLIER",
+		"consoleSpins": "SPINS PLAYED",
+		"consoleSpinsPlayedOf": "/",
+		"consoleLines": "LINES",
+		"consoleBetPerPattern": "Line Bet",
+		"consoleStake": "Stake",
+		"consoleWin": "WIN",
+		"marketingMessages": "3 or more {b01} trigger 15 Free Spins",
+		"bonusMarketingMessages":"ALL WINS PAY TRIPLE EXCEPT FOR 5 {w01}",
+		"capAward": "Congratulations! <br/>You have won the maximum! <currency>{0}</currency>",
+		"capFreeSpin": "Free spins limited to {0}. <br/>{1} additional free spins awarded.",
+		"capFreeSpinNo": "No",
+		"bonusRetrigger": "Congratulations! <br/>You've Won <br/> <currency>{0}</currency> Additional <br/>Free Spins!",
+		"buttonClose": "X",
+		"gameRules": "Game Rules",
+		"payTable": "Paytable",
+		"betPrompt": "Press here to change bet.",
+		"sboxHowToPlay": [" <section> <h1>Cleopatra Games Rules</h1> <h2>Introduction</h2> <p>Take a trip down the Nile and unravel the mysteries of ancient Egypt! <br/>15 free spins in the Cleopatra Bonus bestow luxurious rewards with all wins tripled!</p> <h2>How To Bet</h2> <p> <strong>Cleopatra</strong> features 20 paylines.</p> <div id='betmenu'><h3>BET CONFIGURATION MENU</h3> <p>Press {menu} to open the bet configuration menu.</p></div> <h3>LINE BET</h3> <p>Displays the current bet per line shown in currency.</p> <p>Press {left} to decrease the bet per line.</p> <p>Press {right} to increase the bet per line.</p> <h3>LINES</h3> <p>Displays the current number of paylines selected.</p> <p>Press {left} to decrease the number of paylines played.</p> <p>Press {right} to increase the number of paylines played.</p> <h3>CONFIRM</h3> <p>Press {tick} to confirm and close the bet configuration menu.</p> <h3>SPIN</h3> <p>Press {spin} to spin the reels and submit the bet.</p> <h2>Cleopatra Bonus</h2> <p>Trigger the Cleopatra Bonus by getting three or more Sphinx scatter symbols anywhere on the reels.</p> <p>Sphinx scatter symbols are on reels 1, 2, 3, 4 and 5.</p> <p>Triggering the  <strong>Cleopatra</strong> Bonus awards 15 free spins.</p> <p>All awards, except the 5  <strong>Cleopatra</strong> symbols, are tripled in the Free Spins Bonus.</p> <p>If three or more Sphinx scatter symbols appear anywhere on the reels during a free spin, an additional 15 free spins are added to the current Free Spins Bonus (up to a maximum of 180 total free spins within any bonus round).</p> <p>The bet per line in the bonus is equal to the bet per line on the reel spin that triggered the bonus.</p> <h2>Rules</h2> <p>Misuse or malfunction voids all pays and plays.</p> <p>All line pay symbols must appear on a played line and on consecutive reels, beginning with the far left reel.</p> <p>Only highest winner paid on each payline. Line wins are multiplied by the line bet on the winning line.</p> <p>Only highest scatter win paid. Scatter wins are multiplied by the total bet.</p> <p>When one or more Cleopatra Wild symbols substitute in a win, that win is doubled.</p> <p>Coinciding wins on different paylines are added. Scatter wins are independent from payline wins and are also added to the total amount paid.</p> <p>Awards are shown in currency.</p> <p>Regardless of bet size, there is an award cap on any single transaction. See the paytable for details. A transaction includes the results of the Free Spins Bonus plus the outcome which launched the bonus. If the award cap is reached in the bonus, the bonus ends immediately irrespective of any remaining free spins.</p> <p>All trademarks are registered trademarks or pending trademarks of IGT in the U.S. and/or other countries. © 2017 IGT. All rights reserved.</p> <p>Last updated 14 October 2013</p> <p> </p> <p> </p></section>"],
+		"sboxPaytable": [" <section> <h1>Cleopatra Paytable</h1> <h2>Base Game &amp; Free Spins Bonus Wins</h2> <table id=\"PayTableBaseGame\"> <thead> <tr> <th/> <th>5</th> <th>4</th> <th>3</th> <th>2</th></tr></thead> <tbody> <tr> <td>{w01}</td> <td>10000x</td> <td>2000x</td> <td>200x</td> <td>10x</td></tr> <tr> <td>{s01}</td> <td> 750x</td> <td> 100x</td> <td>25x</td> <td>2x</td></tr> <tr> <td>{s02}</td> <td> 750x</td> <td> 100x</td> <td>25x</td> <td>2x</td></tr> <tr> <td>{s03}</td> <td> 400x</td> <td> 100x</td> <td>15x</td> <td> - </td></tr> <tr> <td>{s04}</td> <td> 250x</td> <td> 75x</td> <td>10x</td> <td> - </td></tr> <tr> <td>{s05}</td> <td> 250x</td> <td> 50x</td> <td>10x</td> <td> - </td></tr> <tr> <td>{s06}</td> <td>  125x</td> <td> 50x</td> <td>10x</td> <td> - </td></tr> <tr> <td>{s07}</td> <td>  100x</td> <td> 50x</td> <td> 5x</td> <td> - </td></tr> <tr> <td>{s08}</td> <td>  100x</td> <td> 25x</td> <td> 5x</td> <td> - </td></tr> <tr> <td>{s09}</td> <td>  100x</td> <td> 25x</td> <td> 5x</td> <td> - </td></tr> <tr> <td>{s10}</td> <td>  100x</td> <td> 25x</td> <td> 5x</td> <td> - </td></tr> <tr> <td>{s11}</td> <td>  100x</td> <td> 25x</td> <td> 5x</td> <td> 2x</td></tr></tbody></table> <p>{w01} is wild and substitutes for all symbols except {b01}.</p> <p>If one or more {w01} substitute in a win, that win is doubled.</p> <p>All line wins pay left to right.</p> <p>All line wins multiplied by line bet.</p></section>",
+		" <section> <h2>Cleopatra Bonus</h2> <p>3, 4, or 5 {b01} in any position on the reels trigger 15 free spins in the Cleopatra Bonus.</p> <p>During the free spins, all wins are tripled except 5 {w01}.</p> <table> <thead> <tr> <th colspan=\"2\">SCATTER WINS</th></tr></thead> <tbody> <tr> <td>Any 5 {b01}</td> <td>Pay 100 times total bet</td></tr> <tr> <td>Any 4 {b01}</td> <td>Pay 20 times total bet</td></tr> <tr> <td>Any 3 {b01}</td> <td>Pay 5 times total bet</td></tr> <tr> <td>Any 2 {b01}</td> <td>Pay 2 times total bet</td></tr> <tr> <td colspan=\"2\">Only highest scatter win paid</td></tr></tbody></table> <p>Additional free spins (up to a maximum of 180 free spins for the entire Bonus) can be triggered during the Bonus.</p></section>",
+		" <section> <h1>Paylines</h1> <winlinediagrams/></section>",
+		" <section> <h1>Payback Information</h1> <p>In accordance with fair gaming practices required in most legal jurisdictions worldwide, each and every game outcome is completely independent. The odds of getting any particular outcome are always the same.</p> <p>The odds do not vary based on prior outcomes, bet size, balance size, time of day, day of week, etc. For example, if the top award is won on a play, the chances of winning the top award on the next play are exactly the same. Likewise, prior losses do not change future odds.</p> <p>The expected payback reflects the theoretical return across a very large number of plays by numerous players over an extended period of time.</p> <p>For this game, the long-term, theoretically expected payback is {RTP}. The results for any given player over a play session can vary widely from this long-term, expected average in either direction. The fewer the number of games played, the wider the normal variance of actual payback may be experienced.</p> <p>The maximum win on any transaction including the results of the Free Spins Bonus, plus the outcome which launched the bonus, is capped at  <currency>{awardCap}.</currency></p></section>"],
+		"Dialog": {
+			"CONGRATULATIONS!": "CONGRATULATIONS!",
+			"YOU WON THE MAX AWARD!": "YOU WON THE MAX AWARD!",
+			"BONUS COMPLETE": "BONUS COMPLETE",
+			"YOU WON": "YOU WON",
+			"ADDITIONAL FREE SPINS!": "ADDITIONAL FREE SPINS!",
+			"FREE SPINS LIMIT IS 180": "FREE SPINS LIMIT IS 180",
+			"NO ADDITIONAL": "NO ADDITIONAL",
+			"FREE SPINS AWARDED": "FREE SPINS AWARDED",
+			"15 FREE SPINS": "15 FREE SPINS",
+			"BONUS": "BONUS",
+			"TRIGGERED": "TRIGGERED",
+			"ALL WINS TRIPLED":"ALL WINS TRIPLED"
+		},
+		"GOOD LUCK": "GOOD LUCK",
+		"PLAY AGAIN": "PLAY AGAIN"
+	}
+}

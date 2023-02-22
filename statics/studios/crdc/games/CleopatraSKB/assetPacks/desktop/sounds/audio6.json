@@ -1,0 +1,89 @@
+{
+  "urls": [
+    "audio6.mp3",
+    "audio6.ogg",
+    "audio6.m4a"
+  ],
+  "sprite": {
+    "BaseSmartSound2": [
+      0,
+      1399.0022675736961
+    ],
+    "BonusLevel1SmartSound2": [
+      2050,
+      1399.002267573696
+    ],
+    "BonusLevel2SmartSound2": [
+      4100,
+      1399.002267573696
+    ],
+    "BonusLevel3SmartSound2": [
+      6149.999999999999,
+      1399.002267573696
+    ],
+    "BonusLevel4SmartSound2": [
+      8200,
+      1399.002267573696
+    ],
+    "BonusLevel5SmartSound2": [
+      10250,
+      1399.002267573696
+    ],
+    "BaseSmartSound5": [
+      12300,
+      1503.4920634920627
+    ],
+    "BonusLevel1SmartSound5": [
+      14350,
+      1503.4920634920627
+    ],
+    "BonusLevel2SmartSound5": [
+      16400,
+      1503.4920634920645
+    ],
+    "BonusLevel3SmartSound5": [
+      18450,
+      1503.4920634920645
+    ],
+    "BonusLevel4SmartSound5": [
+      20500,
+      1503.4920634920645
+    ],
+    "BonusLevel5SmartSound5": [
+      22550,
+      1503.4920634920645
+    ],
+    "Fire": [
+      24600,
+      2751.519274376417
+    ],
+    "ButtonSpin": [
+      27650.000000000004,
+      194.46712018140744
+    ],
+    "ButtonBetDn": [
+      28700.000000000004,
+      1486.0544217687063
+    ],
+    "ButtonBetMax": [
+      30750,
+      1718.2539682539684
+    ],
+    "ButtonBetUp": [
+      32800,
+      1044.8752834467143
+    ],
+    "ButtonLinesDn": [
+      34850,
+      1053.6281179138314
+    ],
+    "ButtonLinesMax": [
+      36900,
+      4965.510204081632
+    ],
+    "ButtonLinesUp": [
+      41949.99999999999,
+      1360.0907029478435
+    ]
+  }
+}

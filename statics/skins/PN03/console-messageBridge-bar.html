@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        //var host_name = "https://rgs-cust03.lab.wagerworks.com/";
+        var host_name = '<!--#echo encoding="none" var="GAME_HOST"-->';
+        if (host_name.indexOf("echo encoding") >= 0) { //environment variable NOT set up
+            host_name = "";
+        }
+
+        /**
+         * includeScript
+         * This function replaces the <script src> tag for instances where
+         * a GAME_HOST path may be required
+         * @param scriptPath - URL to script
+         */
+        function includeScript(scriptPath) {
+            document.write("<script type='text/javascript' src=" + host_name + scriptPath + "><\/script>");
+        }
+    </script>
+</head>
+
+<body>
+    <script type='text/javascript' src='igt_console_comm.js'>
+    </script>
+
+
+    <!-- include IGT IXF Libs -->
+    <script>
+        includeScript("/IXF/1.4/lib/extern.js");
+        includeScript("/IXF/1.4/lib/events.js");
+        includeScript("/IXF/1.4/lib/sliderdt.js");
+        includeScript("/IXF/1.4/promotionalFreeSpins/consoleUI.js");
+        includeScript("/IXF/1.4/cashier/cashierService.js");
+        includeScript("/IXF/1.4/cashier/cashierBuyInForm.js");
+        includeScript("/IXF/1.4/cashier/cashierCashOutForm.js");
+        includeScript("/IXF/1.4/cashier/consoleUI.js");
+        //Make sure this is the last IGT/IXF library to load
+        includeScript("/IXF/1.4/igtBridge.js");
+        //All Custom libraries can go after this
+    </script>
+</body>

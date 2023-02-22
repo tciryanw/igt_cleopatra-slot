@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #eeeeee;
+    overflow: hidden;
+    -ms-overflow-style: none;
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    overflow: -moz-scrollbars-none;
+    height: 100%;
+    width: 100%;
+}
+
+iframe {
+    touch-action: pan-x pan-y;
+    overflow: -moz-scrollbars-none;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -15px 0 0 -15px;
+}
+
+#TCustomView,
+#BCustomView,
+#LCustomView,
+#RCustomView {
+    touch-action: pan-x pan-y;
+    -ms-touch-action: pan-x pan-y;
+}
+
+.message {
+    display: -webkit-box;
+    font-size: 1em;
+    position: relative;
+    padding: 1em;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    background-color: rgba(249, 242, 242, 0.94);
+    margin: 0 auto;
+    border-style: solid;
+    border-radius: 15px;
+}
+
+.messageBoxDiv {
+    visibility: hidden;
+    position: absolute;
+    display: -webkit-box;
+    height: 100vh;
+    width: 100vw;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+}
+
+/* Default Messagebox UI moved to make debugging, updates and QA simpler */
+
+/* SKATE-3731 */
+
+@font-face {
+    font-family: Lato;
+    src: url('./Lato-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Lato;
+    src: url('./Lato-Bold.ttf') format('truetype');
+    /*font-weight:700;*/
+    font-weight: bold;
+}
+
+.MB_centering {
+    height: inherit;
+    width: inherit;
+    display: box;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -moz-box-align: center;
+    -moz-box-pack: center;
+    -ms-flex-direction: column;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+}
+
+.MB_overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 9999;
+}
+
+.MB_messageBoxDiv {
+    position: relative;
+    min-width: 237px;
+    max-width: 492px;
+    background-color: rgba(255, 255, 255, 0.94);
+    margin: 0 auto;
+    background: #1C1D23 0% 0% no-repeat padding-box;
+    border: 1px solid #0E0E10;
+    border-radius: 14px;
+}
+
+.MB_messageInfoDiv {
+    /*message body*/
+    margin: 0;
+    padding: 1em 1em 0.5em 1em;
+    line-height: 22px;
+    color: #ffffff;
+    letter-spacing: 0;
+    text-align: center;
+    font: normal normal bold 18px/26px Lato, Roboto, Arial;
+}
+
+.MB_errorIdDiv {
+    /*error id*/
+    padding: 0em 1em 1em 1em;
+    font: normal normal normal 16px/18px Lato, Roboto, Arial;
+    letter-spacing: 0;
+    color: #898E97;
+    text-align: center;
+}
+
+.MB_supportInfoDiv {
+    /*support info*/
+    padding: 0.5em;
+    text-align: center;
+    letter-spacing: 0;
+    font: normal normal normal 16px/18px Lato, Roboto, Arial;
+    color: #898E91;
+}
+
+.MB_ButtonGroup {
+    padding: 10px;
+}
+
+.MB_Button {
+    color: #ffffff;
+    padding: 9px;
+    font: normal normal bold 16px/23px Lato, Roboto, Arial;
+    cursor: pointer;
+    background: #1C1D23 0% 0% no-repeat padding-box;
+    border: 2px solid #2A2F37;
+    border-radius: 4px;
+    min-height: 14px;
+    margin: 5px;
+}
+
+.MB_FirstButton {
+    background: #0276C7 0% 0% no-repeat padding-box;
+    border: 2px solid #0276C7;
+}
+
+.MB_Button_Landscape {
+    box-sizing: border-box;
+    width: calc(50% - 10px);
+    display: inline-block;
+}
+
+.MB_Button:nth-child {
+    border: 2px solid #2A2F37;
+    background: #1C1D23 0% 0% no-repeat padding-box;
+}
+
+div::-webkit-scrollbar {
+    display: none;
+}
+
+div::-moz-scrollbars {
+    display: none;
+}
+
+div::-o-scrollbar {
+    display: none;
+}
+
+div::-google-ms-scrollbar {
+    display: none;
+}
+
+div::-khtml-scrollbar {
+    display: none;
+}
